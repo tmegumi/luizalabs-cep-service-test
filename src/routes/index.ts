@@ -1,9 +1,9 @@
 import { Router } from 'express';
 
-import cepRouter from './cep.routes';
+import addressRouter from './address.routes';
 
 const routes = Router();
 
-routes.use('/cep', cepRouter);
+routes.use('/address', addressRouter);
 
 export default routes;

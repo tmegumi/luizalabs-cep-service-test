@@ -17,7 +17,11 @@ interface Response {
 }
 
 class FindAddressService {
-  private addressRepository = new AddressRepository();
+  private readonly addressRepository: AddressRepository;
+
+  constructor() {
+    this.addressRepository = new AddressRepository();
+  }
 
   public execute({ cep }: Request): Response {
     const cepIsNumber = /^\d+$/.test(cep);

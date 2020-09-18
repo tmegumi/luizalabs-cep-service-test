@@ -2,6 +2,8 @@ import request from 'supertest';
 import server from '../../src/server';
 
 describe('Address route', () => {
+  afterEach(() => server.close());
+
   it('should be able to return address for a valid CEP', async () => {
     const response = await request(server).get('/address?cep=14780360');
 

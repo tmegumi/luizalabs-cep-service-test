@@ -9,6 +9,10 @@
 * [TypeScript](https://www.typescriptlang.org/)
 * [express](https://expressjs.com/)
 * [ts-node-dev](https://github.com/whitecolor/ts-node-dev)
+* Tests
+  * [Jest](https://jestjs.io/)
+  * [supertest](https://github.com/visionmedia/supertest)
+  * [Babel](https://babeljs.io/)
 
 ## Code Patterns
 In this project, are used some tools to p

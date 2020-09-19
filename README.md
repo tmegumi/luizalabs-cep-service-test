@@ -12,7 +12,7 @@
 * Tests
   * [Jest](https://jestjs.io/)
   * [supertest](https://github.com/visionmedia/supertest)
-  * [Babel](https://babeljs.io/)
+  * [ts-jest](https://github.com/kulshekhar/ts-jest)
 
 ## Code Patterns
 In this project, are used some tools to p

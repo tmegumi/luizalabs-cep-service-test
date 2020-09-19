@@ -1,13 +1,13 @@
 class Address {
-  cep: string;
+  zipcode: string;
 
-  logradouro: string;
+  street: string;
 
-  bairro: string;
+  neighborhood: string;
 
-  cidade: string;
+  city: string;
 
-  uf: string;
+  state: string;
 }
 
 export default Address;

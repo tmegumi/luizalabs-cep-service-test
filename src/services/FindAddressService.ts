@@ -10,10 +10,10 @@ interface Request {
 }
 
 interface Response {
-  logradouro: string;
-  bairro: string;
-  cidade: string;
-  uf: string;
+  street: string;
+  neighborhood: string;
+  city: string;
+  state: string;
 }
 
 class FindAddressService {
@@ -27,20 +27,20 @@ class FindAddressService {
     const cepIsNumber = /^\d+$/.test(cep);
 
     if (!cepIsNumber || cep.length !== CEP_LENGTH) {
-      throw new AppError('CEP inválido');
+      throw new AppError('Invalid CEP.');
     }
 
     const address = this.recursiveFindAddressByCep(cep, 1);
 
     if (!address) {
-      throw new AppError('CEP não encontrado');
+      throw new AppError('CEP not found.');
     }
 
     return {
-      logradouro: address.logradouro,
-      bairro: address.bairro,
-      cidade: address.cidade,
-      uf: address.uf,
+      street: address.street,
+      neighborhood: address.neighborhood,
+      city: address.city,
+      state: address.state,
     };
   }
 

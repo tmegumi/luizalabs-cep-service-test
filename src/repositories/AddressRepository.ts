@@ -4,7 +4,7 @@ import Address from '../models/Address';
 
 class AddressRepository {
   public findByCep(cep: string): Address | null {
-    const address = addressDatabase.find(item => item.cep === cep);
+    const address = addressDatabase.find(item => item.zipcode === cep);
 
     return address || null;
   }

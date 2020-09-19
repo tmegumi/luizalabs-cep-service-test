@@ -8,10 +8,10 @@ describe('Address route', () => {
     const response = await request(server).get('/address?cep=14780360');
 
     expect(response.body).toMatchObject({
-      logradouro: 'Avenida 31',
-      bairro: 'Centro',
-      cidade: 'Barretos',
-      uf: 'SP',
+      street: 'Avenida 31',
+      neighborhood: 'Centro',
+      city: 'Barretos',
+      state: 'São Paulo',
     });
   });
 
@@ -19,10 +19,10 @@ describe('Address route', () => {
     const response = await request(server).get('/address?cep=01001221');
 
     expect(response.body).toMatchObject({
-      logradouro: 'Praça da Sé',
-      bairro: 'Sé',
-      cidade: 'São Paulo',
-      uf: 'SP',
+      street: 'Praça da Sé',
+      neighborhood: 'Sé',
+      city: 'São Paulo',
+      state: 'São Paulo',
     });
   });
 });

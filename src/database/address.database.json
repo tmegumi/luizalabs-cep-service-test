@@ -1,23 +1,23 @@
 [
   {
-    "cep": "01001000",
-    "logradouro": "Praça da Sé",
-    "bairro": "Sé",
-    "cidade": "São Paulo",
-    "uf": "SP"
+    "zipcode": "01001000",
+    "street": "Praça da Sé",
+    "neighborhood": "Sé",
+    "city": "São Paulo",
+    "state": "São Paulo"
   },
   {
-    "cep": "14780360",
-    "logradouro": "Avenida 31",
-    "bairro": "Centro",
-    "cidade": "Barretos",
-    "uf": "SP"
+    "zipcode": "14780360",
+    "street": "Avenida 31",
+    "neighborhood": "Centro",
+    "city": "Barretos",
+    "state": "São Paulo"
   },
   {
-    "cep": "14020630",
-    "logradouro": "Rua Abrão Caixe",
-    "bairro": "Condomínio Itamaraty",
-    "cidade": "Ribeirão Preto",
-    "uf": "SP"
+    "zipcode": "14020630",
+    "street": "Rua Abrão Caixe",
+    "neighborhood": "Condomínio Itamaraty",
+    "city": "Ribeirão Preto",
+    "state": "São Paulo"
   }
 ]

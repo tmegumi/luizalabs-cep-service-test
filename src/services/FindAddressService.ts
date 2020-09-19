@@ -1,7 +1,7 @@
 import AddressRepository from '../repositories/AddressRepository';
 
 import { CEP_LENGTH, DEFAULT_CEP } from '../constants';
-
+import AppError from '../errors/AppError';
 import replaceLastCharactersByZero from '../utils/replaceLastCharactersByZero';
 import Address from '../models/Address';
 
@@ -27,13 +27,13 @@ class FindAddressService {
     const cepIsNumber = /^\d+$/.test(cep);
 
     if (!cepIsNumber || cep.length !== CEP_LENGTH) {
-      throw new Error('CEP inválido');
+      throw new AppError('CEP inválido');
     }
 
     const address = this.recursiveFindAddressByCep(cep, 1);
 
     if (!address) {
-      throw new Error('CEP não encontrado');
+      throw new AppError('CEP não encontrado');
     }
 
     return {

@@ -2,6 +2,7 @@ import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
 import replaceLastCharactersByZero from '@shared/utils/replaceLastCharactersByZero';
+import { isValidLength, isNumber } from '@shared/utils/validateInput';
 
 import { CEP_LENGTH, DEFAULT_CEP } from '@modules/adresses/constants';
 import Address from '@modules/adresses/infra/database/entities/Address';
@@ -27,9 +28,7 @@ class FindAddressService {
   ) {}
 
   public execute({ cep }: IRequest): IResponse {
-    const cepIsNumber = /^\d+$/.test(cep);
-
-    if (!cepIsNumber || cep.length !== CEP_LENGTH) {
+    if (!isNumber(cep) || !isValidLength(cep, CEP_LENGTH, CEP_LENGTH)) {
       throw new AppError('Invalid CEP.');
     }
 

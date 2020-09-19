@@ -1,3 +1,5 @@
+import { injectable, inject } from 'tsyringe';
+
 import AppError from '@shared/errors/AppError';
 import replaceLastCharactersByZero from '@shared/utils/replaceLastCharactersByZero';
 
@@ -17,8 +19,12 @@ interface IResponse {
   state: string;
 }
 
+@injectable()
 class FindAddressService {
-  constructor(private adressesRepository: IAdressesRepository) {}
+  constructor(
+    @inject('AdressesRepository')
+    private adressesRepository: IAdressesRepository,
+  ) {}
 
   public execute({ cep }: IRequest): IResponse {
     const cepIsNumber = /^\d+$/.test(cep);

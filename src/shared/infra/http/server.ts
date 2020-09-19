@@ -1,5 +1,7 @@
 import express from 'express';
 
+import '@shared/container';
+
 import appErrorHandler from './middlewares/appErrorHandler';
 import routes from './routes';
 

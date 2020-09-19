@@ -15,7 +15,8 @@ This project was build in NodeJS with typescript template and it is structured l
     │       ├── repositories          /* repositories interfaces */
     │       └── services              /* bussiness rules */
     ├── shared                        /* shared to modules */
-    │   ├── errors
+    │   ├── container                 /* dependency injection manager */
+    │   ├── errors                    /* custom errors*/
     │   ├── infra                     /* infrastructure layer */
     │   |   ├── database              /* database connections */
     │   |   └── http                  /* http protocol */
@@ -35,6 +36,7 @@ This project was build in NodeJS with typescript template and it is structured l
 * [TypeScript](https://www.typescriptlang.org/)
   * [ts-node-dev](https://github.com/whitecolor/ts-node-dev)
   * [tsconfig-paths](https://github.com/dividab/tsconfig-paths)
+  * [tsyringe](https://github.com/microsoft/tsyringe)
 * [express](https://expressjs.com/)
 * Tests
   * [Jest](https://jestjs.io/)

@@ -48,7 +48,7 @@ class FindAddressService {
     cep: string,
     counter: number,
   ): Address | null {
-    const address = this.addressRepository.findByCep(cep);
+    const address = this.addressRepository.find(cep);
 
     if (!address && cep !== DEFAULT_CEP) {
       const newCep = replaceLastCharactersByZero(cep, counter);

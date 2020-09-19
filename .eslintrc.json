@@ -33,6 +33,9 @@
         "ts": "never"
       }
     ],
+    "import/no-extraneous-dependencies": ["error", {
+      "devDependencies": ["**/*.spec.ts"]
+    }],
     "@typescript-eslint/no-unused-vars": ["error", {
       "argsIgnorePattern": "_"
     }],

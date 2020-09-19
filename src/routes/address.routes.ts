@@ -1,10 +1,11 @@
 import { Router } from 'express';
 
+import ensureAuthenticated from '../middlewares/ensureAuthenticated';
 import FindAddressService from '../services/FindAddressService';
 
 const addressRouter = Router();
 
-addressRouter.get('/', (request, response) => {
+addressRouter.get('/', ensureAuthenticated, (request, response) => {
   const { cep } = request.query;
 
   const findAddressService = new FindAddressService();

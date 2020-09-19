@@ -11,6 +11,7 @@ This project was build in NodeJS with typescript template and it is structured l
     │       |   |   ├── entities      /* database entitites */
     │       |   |   └── repositories  /* connect to database */
     │       |   └── http
+    │       |       ├── controllers
     │       |       └── routes
     │       ├── repositories          /* repositories interfaces */
     │       └── services              /* bussiness rules */

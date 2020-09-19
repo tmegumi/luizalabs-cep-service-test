@@ -5,11 +5,11 @@ import User from '../entities/User';
 
 class UsersRepository implements IUsersRepository {
   public find(email: string, password: string): User | null {
-    const user = usersDatabase.find(
-      item => item.email === email && item.password === password,
+    const userFind = usersDatabase.find(
+      user => user.email === email && user.password === password,
     );
 
-    return user || null;
+    return userFind || null;
   }
 }
 

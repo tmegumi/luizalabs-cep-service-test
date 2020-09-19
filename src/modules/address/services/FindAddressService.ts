@@ -1,9 +1,9 @@
-import AddressRepository from '../repositories/AddressRepository';
+import AppError from '@shared/errors/AppError';
+import replaceLastCharactersByZero from '@shared/utils/replaceLastCharactersByZero';
 
-import { CEP_LENGTH, DEFAULT_CEP } from '../constants';
-import AppError from '../errors/AppError';
-import replaceLastCharactersByZero from '../utils/replaceLastCharactersByZero';
-import Address from '../models/Address';
+import { CEP_LENGTH, DEFAULT_CEP } from '@modules/address/constants';
+import Address from '@modules/address/infra/database/entities/Address';
+import AddressRepository from '@modules/address/infra/database/repositories/AddressRepository';
 
 interface Request {
   cep: string;

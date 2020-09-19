@@ -1,7 +1,7 @@
 import { Router } from 'express';
 
-import ensureAuthenticated from '../middlewares/ensureAuthenticated';
-import FindAddressService from '../services/FindAddressService';
+import FindAddressService from '@modules/address/services/FindAddressService';
+import ensureAuthenticated from '@shared/infra/http/middlewares/ensureAuthenticated';
 
 const addressRouter = Router();
 

@@ -1,5 +1,31 @@
 # CEP Service
 
+This project was build in NodeJS with typescript template and it is structured like following:
+
+```
+└── src
+    ├── modules                       /* specific to domain group */
+    │   └── moduleName
+    │       ├── infra                 /* infrastructure layer */
+    │       |   ├── database
+    │       |   |   ├── entities      /* database entitites */
+    │       |   |   └── repositories  /* connect to database */
+    │       |   └── http
+    │       |       └── routes
+    │       ├── repositories          /* repositories interfaces */
+    │       └── services              /* bussiness rules */
+    ├── shared                        /* shared to modules */
+    │   ├── errors
+    │   ├── infra                     /* infrastructure layer */
+    │   |   ├── database              /* database connections */
+    │   |   └── http                  /* http protocol */
+    │   |       ├── middlewares
+    │   |       ├── routes
+    │   |       └── server
+    │   └── utils
+    └── server
+```
+
 ## Requirements
 * [NodeJS](https://nodejs.org/) (Currently using v12.18.3)
 * [Yarn](https://yarnpkg.com/) (Current using v1.22.5)
@@ -7,17 +33,18 @@
 ## Technologies
 * [NodeJS](https://nodejs.org/)
 * [TypeScript](https://www.typescriptlang.org/)
+  * [ts-node-dev](https://github.com/whitecolor/ts-node-dev)
+  * [tsconfig-paths](https://github.com/dividab/tsconfig-paths)
 * [express](https://expressjs.com/)
-* [ts-node-dev](https://github.com/whitecolor/ts-node-dev)
 * Tests
   * [Jest](https://jestjs.io/)
   * [supertest](https://github.com/visionmedia/supertest)
   * [ts-jest](https://github.com/kulshekhar/ts-jest)
 
 ## Code Patterns
-In this project, are used some tools to p
+In this project, are used some patterns to mantain code organization:
 * [EditorConfig](https://editorconfig.org/)
-* [ESLint](https://eslint.org/)
+* [ESLint](https://eslint.org/) (*AirBNB style guide*)
 * [Prettier](https://prettier.io/)
 
 If you are using Visual Studio Code, install [ESLint plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and remove **Prettier - Code Formatter** extension, because it could cause some incompatibilities with other configurations.

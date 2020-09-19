@@ -1,6 +1,6 @@
-import usersDatabase from '../database/users.database.json';
+import usersDatabase from '@shared/infra/database/users.database.json';
 
-import User from '../models/User';
+import User from '../entities/User';
 
 class UserRepository {
   public find(email: string, password: string): User | null {

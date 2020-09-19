@@ -1,6 +1,6 @@
-import addressDatabase from '../database/address.database.json';
+import addressDatabase from '@shared/infra/database/address.database.json';
 
-import Address from '../models/Address';
+import Address from '../entities/Address';
 
 class AddressRepository {
   public find(zipCode: string): Address | null {

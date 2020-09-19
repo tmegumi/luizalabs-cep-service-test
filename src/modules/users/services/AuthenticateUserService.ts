@@ -1,9 +1,8 @@
 import { sign } from 'jsonwebtoken';
 
-import authConfig from '../config/auth';
-import AppError from '../errors/AppError';
-
-import UserRepository from '../repositories/UserRepository';
+import authConfig from '@config/auth';
+import UserRepository from '@modules/users/infra/database/repositories/UserRepository';
+import AppError from '@shared/errors/AppError';
 
 interface Request {
   email: string;

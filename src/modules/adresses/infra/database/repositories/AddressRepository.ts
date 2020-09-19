@@ -5,9 +5,11 @@ import Address from '../entities/Address';
 
 class AdressesRepository implements IAdressesRepository {
   public find(zipCode: string): Address | null {
-    const address = adressesDatabase.find(item => item.zipcode === zipCode);
+    const findAddress = adressesDatabase.find(
+      address => address.zipcode === zipCode,
+    );
 
-    return address || null;
+    return findAddress || null;
   }
 }
 

@@ -1,4 +1,4 @@
-import replaceLastCharactersByZero from '@shared/utils/replaceLastCharactersByZero';
+import replaceLastCharactersByZero from './replaceLastCharactersByZero';
 
 describe('Function replaceLastCharactersByZero', () => {
   it('should not replace any character', () => {

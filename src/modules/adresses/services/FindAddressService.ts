@@ -1,15 +1,16 @@
 import AppError from '@shared/errors/AppError';
 import replaceLastCharactersByZero from '@shared/utils/replaceLastCharactersByZero';
 
-import { CEP_LENGTH, DEFAULT_CEP } from '@modules/address/constants';
-import Address from '@modules/address/infra/database/entities/Address';
-import AddressRepository from '@modules/address/infra/database/repositories/AddressRepository';
+import { CEP_LENGTH, DEFAULT_CEP } from '@modules/adresses/constants';
+import Address from '@modules/adresses/infra/database/entities/Address';
 
-interface Request {
+import IAdressesRepository from '../repositories/IAdressesRepository';
+
+interface IRequest {
   cep: string;
 }
 
-interface Response {
+interface IResponse {
   street: string;
   neighborhood: string;
   city: string;
@@ -17,13 +18,9 @@ interface Response {
 }
 
 class FindAddressService {
-  private readonly addressRepository: AddressRepository;
+  constructor(private adressesRepository: IAdressesRepository) {}
 
-  constructor() {
-    this.addressRepository = new AddressRepository();
-  }
-
-  public execute({ cep }: Request): Response {
+  public execute({ cep }: IRequest): IResponse {
     const cepIsNumber = /^\d+$/.test(cep);
 
     if (!cepIsNumber || cep.length !== CEP_LENGTH) {
@@ -48,7 +45,7 @@ class FindAddressService {
     cep: string,
     counter: number,
   ): Address | null {
-    const address = this.addressRepository.find(cep);
+    const address = this.adressesRepository.find(cep);
 
     if (!address && cep !== DEFAULT_CEP) {
       const newCep = replaceLastCharactersByZero(cep, counter);

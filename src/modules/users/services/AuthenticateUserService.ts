@@ -1,26 +1,23 @@
 import { sign } from 'jsonwebtoken';
 
 import authConfig from '@config/auth';
-import UserRepository from '@modules/users/infra/database/repositories/UserRepository';
 import AppError from '@shared/errors/AppError';
 
-interface Request {
+import IUsersRepository from '../repositories/IUsersRepository';
+
+interface IRequest {
   email: string;
   password: string;
 }
 
-interface Response {
+interface IResponse {
   token: string;
 }
 
 class AuthenticateUserService {
-  private readonly userRepository: UserRepository;
+  constructor(private userRepository: IUsersRepository) {}
 
-  constructor() {
-    this.userRepository = new UserRepository();
-  }
-
-  public execute({ email, password }: Request): Response {
+  public execute({ email, password }: IRequest): IResponse {
     const user = this.userRepository.find(email, password);
 
     if (!user) {

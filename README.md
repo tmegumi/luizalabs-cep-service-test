@@ -13,7 +13,8 @@ This project was build in NodeJS with typescript template and it is structured l
     │       |   └── http
     │       |       ├── controllers
     │       |       └── routes
-    │       ├── repositories          /* repositories interfaces */
+    │       ├── repositories
+    │       |   └── fakes
     │       └── services              /* bussiness rules */
     ├── shared                        /* shared to modules */
     │   ├── container                 /* dependency injection manager */

@@ -1,6 +1,6 @@
 import replaceLastCharactersByZero from './replaceLastCharactersByZero';
 
-describe('Function replaceLastCharactersByZero', () => {
+describe('replaceLastCharactersByZero', () => {
   it('should not replace any character', () => {
     const result = replaceLastCharactersByZero('Some text to test', 0);
 

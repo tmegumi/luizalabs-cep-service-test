@@ -3,6 +3,8 @@ import { sign } from 'jsonwebtoken';
 import authConfig from '../config/auth';
 import AppError from '../errors/AppError';
 
+import UserRepository from '../repositories/UserRepository';
+
 interface Request {
   email: string;
   password: string;
@@ -12,19 +14,15 @@ interface Response {
   token: string;
 }
 
-const users = [
-  {
-    id: '407e397c-8396-49d2-b409-3edc65de3e76',
-    email: 'test@test.com',
-    password: '123456',
-  },
-];
-
 class AuthenticateUserService {
+  private readonly userRepository: UserRepository;
+
+  constructor() {
+    this.userRepository = new UserRepository();
+  }
+
   public execute({ email, password }: Request): Response {
-    const user = users.find(
-      item => item.email === email && item.password === password,
-    );
+    const user = this.userRepository.find(email, password);
 
     if (!user) {
       throw new AppError('Invalid user or password.', 401);

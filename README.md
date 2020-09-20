@@ -1,37 +1,39 @@
 # CEP Service
 
-This project was build in NodeJS with typescript template and it is structured like following:
+This project is an address search service by CEP for authenticated users and is build in NodeJS with TypeScript template, structured like following:
 
 ```
 └── src
+    ├── config                        /* configurations */
     ├── modules                       /* specific to domain group */
-    │   └── moduleName
+    │   └── moduleName                /* domain group */
     │       ├── infra                 /* infrastructure layer */
-    │       |   ├── database
+    │       |   ├── database          /* database logic */
     │       |   |   ├── entities      /* database entitites */
     │       |   |   └── repositories  /* connect to database */
-    │       |   └── http
-    │       |       ├── controllers
-    │       |       └── routes
-    │       ├── repositories
-    │       |   └── fakes
+    │       |   └── http              /* http protocol */
+    │       |       ├── controllers   /* specific controllers */
+    │       |       └── routes        /* specific routes */
+    │       ├── repositories          /* specific repositories */
+    │       |   └── fakes             /* fake repositories */
     │       └── services              /* bussiness rules */
-    ├── shared                        /* shared to modules */
-    │   ├── container                 /* dependency injection manager */
-    │   ├── errors                    /* custom errors*/
-    │   ├── infra                     /* infrastructure layer */
-    │   |   ├── database              /* database connections */
-    │   |   └── http                  /* http protocol */
-    │   |       ├── middlewares
-    │   |       ├── routes
-    │   |       └── server
-    │   └── utils
-    └── server
+    └── shared                        /* shared to modules */
+        ├── container                 /* dependency injection manager */
+        ├── errors                    /* custom errors */
+        ├── infra                     /* infrastructure layer */
+        |   ├── database              /* general database logic */
+        |   └── http                  /* http protocol */
+        |       ├── middlewares       /* general middlewares */
+        |       ├── routes            /* general routes */
+        |       └── server            /* main application */
+        └── utils                     /* usefull functions */
 ```
 
 ## Requirements
 * [NodeJS](https://nodejs.org/) (Currently using v12.18.3)
 * [Yarn](https://yarnpkg.com/) (Current using v1.22.5)
+
+NodeJS was chosen for this project because it is light, fast and powerful. As I am studying more about NodeJS, I found it particularly easier to build an application quickly with it.
 
 ## Technologies
 * [NodeJS](https://nodejs.org/)
@@ -51,7 +53,7 @@ In this project, are used some patterns to mantain code organization:
 * [ESLint](https://eslint.org/) (*AirBNB style guide*)
 * [Prettier](https://prettier.io/)
 
-If you are using Visual Studio Code, install [ESLint plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and remove **Prettier - Code Formatter** extension, because it could cause some incompatibilities with other configurations.
+If you are using Visual Studio Code, install [ESLint plugin](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint) and remove **Prettier - Code Formatter** extension, because it could cause some incompatibilities with some ESLint configurations.
 
 ## Getting Started
 ### Project setup
@@ -64,10 +66,36 @@ Install the dependencies
 yarn
 ```
 ### Running
-Start the application using the yarn command
+Start the application in development mode using the yarn command:
 ```
 yarn dev:server
 ```
+The application will start on 3333 port. In Postman, Insomnia or even with CURL you can call the authentication route with a test user in the request body to get an token:
+
+```
+[POST] http://localhost:3333/sessions
+
+/* Request Body
+{
+	"email": "test@test.com",
+	"password": "123456"
+}
+*/
+```
+Copy the token value and call the search address endpoint with Bearer Authentication on it and CEP number like param:
+
+```
+[GET] http://localhost:3333/adresses/14780360
+```
+
+### Testing
+
+To test the application, use the command:
+```
+yarn test
+```
+You can see coverage report on coverade folder.
+
 
 ## Miscellaneous
 ### Code Editor

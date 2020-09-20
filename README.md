@@ -75,12 +75,11 @@ The application will start on 3333 port. In Postman, Insomnia or even with CURL 
 ```
 [POST] http://localhost:3333/sessions
 
-/* Request Body
-{
-	"email": "test@test.com",
-	"password": "123456"
-}
-*/
+// Request Body
+// {
+//   "email": "test@test.com",
+//   "password": "123456"
+// }
 ```
 Copy the token value and call the search address endpoint with Bearer Authentication on it and CEP number like param:
 

@@ -1,7 +1,8 @@
 import { injectable, inject } from 'tsyringe';
 
 import AppError from '@shared/errors/AppError';
-import replaceLastCharactersByZero from '@shared/utils/replaceLastCharactersByZero';
+import getLastCharactersAsCharLength from '@shared/utils/getLastCharactersAsCharLength';
+import replaceLastCharacters from '@shared/utils/replaceLastCharacters';
 import { isValidLength, isNumber } from '@shared/utils/validateInput';
 
 import { CEP_LENGTH, DEFAULT_CEP } from '@modules/adresses/constants';
@@ -32,7 +33,9 @@ class FindAddressService {
       throw new AppError('Invalid CEP.');
     }
 
-    const address = this.recursiveFindAddressByCep(cep, 1);
+    const length = getLastCharactersAsCharLength(cep, '0');
+
+    const address = this.recursiveFindAddressByCep(cep, length);
 
     if (!address) {
       throw new AppError('CEP not found.');
@@ -48,14 +51,21 @@ class FindAddressService {
 
   private recursiveFindAddressByCep(
     cep: string,
-    counter: number,
+    lastCharactersAsZeroLength: number,
   ): Address | null {
     const address = this.adressesRepository.find(cep);
 
     if (!address && cep !== DEFAULT_CEP) {
-      const newCep = replaceLastCharactersByZero(cep, counter);
+      const newCep = replaceLastCharacters(
+        cep,
+        '0',
+        lastCharactersAsZeroLength,
+      );
 
-      return this.recursiveFindAddressByCep(newCep, counter + 1);
+      return this.recursiveFindAddressByCep(
+        newCep,
+        lastCharactersAsZeroLength + 1,
+      );
     }
 
     return address;

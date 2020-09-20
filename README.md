@@ -25,6 +25,9 @@ This project is an address search service by CEP for authenticated users and is 
         |   └── http                  /* http protocol */
         |       ├── middlewares       /* general middlewares */
         |       ├── routes            /* general routes */
+        |       ├── swagger           /* API documentation */
+        │       |   ├── routes        /* documentation routes */
+        │       |   └── index         /* swagger documentation */
         |       └── server            /* main application */
         └── utils                     /* usefull functions */
 ```
@@ -70,22 +73,8 @@ Start the application in development mode using the yarn command:
 ```
 yarn dev:server
 ```
-The application will start on 3333 port. In Postman, Insomnia or even with CURL you can call the authentication route with a test user in the request body to get an token:
-
-```
-[POST] http://localhost:3333/sessions
-
-// Request Body
-// {
-//   "email": "test@test.com",
-//   "password": "123456"
-// }
-```
-Copy the token value and call the search address endpoint with Bearer Authentication on it and CEP number like param:
-
-```
-[GET] http://localhost:3333/adresses/14780360
-```
+The application will start on 3333 port.
+To see Swagger documentation access `/api-docs` route.
 
 ### Testing
 

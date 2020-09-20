@@ -1,15 +1,19 @@
 import AppError from '@shared/errors/AppError';
+
 import FakeUsersRepository from '../repositories/fakes/FakeUsersRepository';
 import AuthenticateUserService from './AuthenticateUserService';
 
-describe('AuthenticateUser', () => {
-  it('should return token for a valid email/password combination', () => {
-    const fakeUsersRepository = new FakeUsersRepository();
-    const authenticateUserService = new AuthenticateUserService(
-      fakeUsersRepository,
-    );
+let fakeUsersRepository: FakeUsersRepository;
+let authenticateUser: AuthenticateUserService;
 
-    const token = authenticateUserService.execute({
+describe('AuthenticateUser', () => {
+  beforeEach(() => {
+    fakeUsersRepository = new FakeUsersRepository();
+    authenticateUser = new AuthenticateUserService(fakeUsersRepository);
+  });
+
+  it('should return token for a valid email/password combination', () => {
+    const token = authenticateUser.execute({
       email: 'test@test.com',
       password: '123456',
     });
@@ -18,13 +22,8 @@ describe('AuthenticateUser', () => {
   });
 
   it('should throw and error for an invalid email/password combination', () => {
-    const fakeUsersRepository = new FakeUsersRepository();
-    const authenticateUserService = new AuthenticateUserService(
-      fakeUsersRepository,
-    );
-
     const execute = () =>
-      authenticateUserService.execute({
+      authenticateUser.execute({
         email: 'test@email.com',
         password: '123456',
       });

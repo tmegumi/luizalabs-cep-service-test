@@ -1,13 +1,19 @@
 import AppError from '@shared/errors/AppError';
+
 import FakeAdressesRepository from '../repositories/fakes/FakeAddressRepository';
 import FindAddressService from './FindAddressService';
 
-describe('FindAddress', () => {
-  it('should return address for a valid CEP', () => {
-    const fakeAdressesRepository = new FakeAdressesRepository();
-    const findAddressService = new FindAddressService(fakeAdressesRepository);
+let fakeAdressesRepository: FakeAdressesRepository;
+let findAddress: FindAddressService;
 
-    const address = findAddressService.execute({ cep: '14780360' });
+describe('FindAddress', () => {
+  beforeEach(() => {
+    fakeAdressesRepository = new FakeAdressesRepository();
+    findAddress = new FindAddressService(fakeAdressesRepository);
+  });
+
+  it('should return address for a valid CEP', () => {
+    const address = findAddress.execute({ cep: '14780360' });
 
     expect(address).toMatchObject({
       street: 'Avenida 31',
@@ -18,28 +24,19 @@ describe('FindAddress', () => {
   });
 
   it('should throw an error if requested CEP is not a number', () => {
-    const fakeAdressesRepository = new FakeAdressesRepository();
-    const findAddressService = new FindAddressService(fakeAdressesRepository);
-
-    const execute = () => findAddressService.execute({ cep: 'Test' });
+    const execute = () => findAddress.execute({ cep: 'Test' });
 
     expect(execute).toThrow(AppError);
   });
 
   it('should throw an error if requested CEP has not valid length', () => {
-    const fakeAdressesRepository = new FakeAdressesRepository();
-    const findAddressService = new FindAddressService(fakeAdressesRepository);
-
-    const execute = () => findAddressService.execute({ cep: '1478036' });
+    const execute = () => findAddress.execute({ cep: '1478036' });
 
     expect(execute).toThrow(AppError);
   });
 
   it('should throw an error for a valid but not found CEP', () => {
-    const fakeAdressesRepository = new FakeAdressesRepository();
-    const findAddressService = new FindAddressService(fakeAdressesRepository);
-
-    const execute = () => findAddressService.execute({ cep: '14021360' });
+    const execute = () => findAddress.execute({ cep: '14021360' });
 
     expect(execute).toThrow(AppError);
   });

@@ -1,7 +1,20 @@
 [
   {
     "id": "407e397c-8396-49d2-b409-3edc65de3e76",
-    "email": "test@test.com",
-    "password": "123456"
+    "email": "john@test.com",
+    "password": "123456",
+    "role": 1
+  },
+  {
+    "id": "5a8560d3-0adf-42f0-afd4-87f471310023",
+    "email": "emma@test.com",
+    "password": "123456",
+    "role": 1
+  },
+  {
+    "id": "7c4ae814-9c8c-4bec-bdb4-9eba8b319270",
+    "email": "jack@test.com",
+    "password": "123456",
+    "role": 2
   }
 ]

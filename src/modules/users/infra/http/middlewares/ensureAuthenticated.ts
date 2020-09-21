@@ -4,11 +4,18 @@ import { verify } from 'jsonwebtoken';
 import authConfig from '@config/auth';
 import AppError from '@shared/errors/AppError';
 
-export default function ensureAuthenticated(
+interface TokenPayload {
+  iat: number;
+  exp: number;
+  sub: string;
+  role: string;
+}
+
+const ensureAuthenticated = (
   request: Request,
   response: Response,
   next: NextFunction,
-): void {
+): void => {
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
@@ -18,10 +25,19 @@ export default function ensureAuthenticated(
   const [, token] = authHeader.split(' ');
 
   try {
-    verify(token, authConfig.jwt.secret);
+    const decoded = verify(token, authConfig.jwt.secret);
+
+    const { role, sub } = decoded as TokenPayload;
+
+    request.user = {
+      id: sub,
+      role: Number(role),
+    };
 
     return next();
   } catch {
     throw new AppError('Token inválido.', 401);
   }
-}
+};
+
+export default ensureAuthenticated;

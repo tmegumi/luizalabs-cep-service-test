@@ -20,4 +20,16 @@ describe('replaceLastCharacters', () => {
 
     expect(result).toBe('00000000000000000');
   });
+
+  it('should throw an error replaceToChar lenght is not 1', () => {
+    const execute = () => replaceLastCharacters('Some text to test', '00', 1);
+
+    expect(execute).toThrow(Error);
+  });
+
+  it('should throw an error lengthToReplace is bigger than value to replace', () => {
+    const execute = () => replaceLastCharacters('Some text to test', '0', 30);
+
+    expect(execute).toThrow(Error);
+  });
 });

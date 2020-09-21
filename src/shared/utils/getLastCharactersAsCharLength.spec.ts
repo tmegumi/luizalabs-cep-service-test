@@ -12,4 +12,10 @@ describe('getLastCharactersAsCharLength', () => {
 
     expect(length).toBe(3);
   });
+
+  it('should throw an error charToValidate lenght is not 1', () => {
+    const execute = () => getLastCharactersAsCharLength('123456t', '00');
+
+    expect(execute).toThrow(Error);
+  });
 });

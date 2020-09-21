@@ -12,7 +12,7 @@ export default function ensureAuthenticated(
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
-    throw new AppError('No token provided.', 401);
+    throw new AppError('Nenhum token inserido.', 401);
   }
 
   const [, token] = authHeader.split(' ');
@@ -22,6 +22,6 @@ export default function ensureAuthenticated(
 
     return next();
   } catch {
-    throw new AppError('Invalid token.', 401);
+    throw new AppError('Token inválido.', 401);
   }
 }

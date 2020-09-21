@@ -30,7 +30,7 @@ class FindAddressService {
 
   public execute({ cep }: IRequest): IResponse {
     if (!isNumber(cep) || !isValidLength(cep, CEP_LENGTH, CEP_LENGTH)) {
-      throw new AppError('Invalid CEP.');
+      throw new AppError('CEP inválido.');
     }
 
     const length = getLastCharactersAsCharLength(cep, '0');
@@ -38,7 +38,7 @@ class FindAddressService {
     const address = this.recursiveFindAddressByCep(cep, length);
 
     if (!address) {
-      throw new AppError('CEP not found.');
+      throw new AppError('CEP não encontrado.');
     }
 
     return {

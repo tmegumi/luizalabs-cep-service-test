@@ -26,7 +26,7 @@ class AuthenticateUserService {
     const user = this.userRepository.find(email, password);
 
     if (!user) {
-      throw new AppError('Invalid user or password.', 401);
+      throw new AppError('Usuário ou senha inválidos.', 401);
     }
 
     const { secret, expiresIn } = authConfig.jwt;

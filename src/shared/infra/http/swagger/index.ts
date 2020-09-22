@@ -55,7 +55,7 @@ const swaggerDocument = {
             },
           },
           '401': {
-            description: 'Invalid user or password.',
+            description: 'Invalid user or password',
           },
         },
       },
@@ -91,6 +91,9 @@ const swaggerDocument = {
           '400': {
             description: 'Bad input parameter',
           },
+          '401': {
+            description: 'Authorization information is missing or invalid',
+          },
         },
       },
     },
@@ -107,6 +110,11 @@ const swaggerDocument = {
       AccessToken: {
         type: 'object',
         properties: {
+          user: {
+            schema: {
+              $ref: '#/components/schemas/UserResponse',
+            },
+          },
           token: {
             type: 'string',
             example:
@@ -121,11 +129,28 @@ const swaggerDocument = {
           email: {
             type: 'string',
             format: 'email',
-            example: 'test@test.com',
+            example: 'john@test.com',
           },
           password: {
             type: 'string',
             example: '123456',
+          },
+        },
+      },
+      UserResponse: {
+        type: 'object',
+        properties: {
+          id: {
+            type: 'string',
+            example: '407e397c-8396-49d2-b409-3edc65de3e76',
+          },
+          email: {
+            type: 'string',
+            example: 'test@test.com',
+          },
+          role: {
+            type: 'int',
+            example: 1,
           },
         },
       },

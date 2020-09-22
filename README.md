@@ -4,15 +4,18 @@ This project is an address search service by CEP for authenticated users and is 
 
 ```
 └── src
+    ├── @types                        /* specific TS types */
     ├── config                        /* configurations */
     ├── modules                       /* specific to domain group */
     │   └── moduleName                /* domain group */
+    │       ├── constants             /* module constants */
     │       ├── infra                 /* infrastructure layer */
     │       |   ├── database          /* database logic */
     │       |   |   ├── entities      /* database entitites */
     │       |   |   └── repositories  /* connect to database */
     │       |   └── http              /* http protocol */
     │       |       ├── controllers   /* specific controllers */
+    │       |       ├── middlewares   /* specific middlewares */
     │       |       └── routes        /* specific routes */
     │       ├── repositories          /* specific repositories */
     │       |   └── fakes             /* fake repositories */
@@ -41,14 +44,17 @@ NodeJS was chosen for this project because it is light, fast and powerful. As I 
 ## Technologies
 * [NodeJS](https://nodejs.org/)
 * [TypeScript](https://www.typescriptlang.org/)
+  * [reflect-metadata](https://github.com/rbuckton/reflect-metadata)
   * [ts-node-dev](https://github.com/whitecolor/ts-node-dev)
   * [tsconfig-paths](https://github.com/dividab/tsconfig-paths)
   * [tsyringe](https://github.com/microsoft/tsyringe)
 * [express](https://expressjs.com/)
+* [JWT](https://github.com/auth0/node-jsonwebtoken)
 * Tests
   * [Jest](https://jestjs.io/)
   * [supertest](https://github.com/visionmedia/supertest)
   * [ts-jest](https://github.com/kulshekhar/ts-jest)
+* [Swagger Documentation](https://github.com/scottie1984/swagger-ui-express)
 
 ## Code Patterns
 In this project, are used some patterns to mantain code organization:

@@ -12,16 +12,17 @@ describe('AuthenticateUser', () => {
     authenticateUser = new AuthenticateUserService(fakeUsersRepository);
   });
 
-  it('should return token for a valid email/password combination', () => {
-    const token = authenticateUser.execute({
+  it('should return user data and token for a valid email/password combination', () => {
+    const { user, token } = authenticateUser.execute({
       email: 'test@test.com',
       password: '123456',
     });
 
     expect(token).not.toBeNull();
+    expect(user.email).toBe('test@test.com');
   });
 
-  it('should throw and error for an invalid email/password combination', () => {
+  it('should throw an error for an invalid email/password combination', () => {
     const execute = () =>
       authenticateUser.execute({
         email: 'test@email.com',

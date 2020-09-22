@@ -97,6 +97,33 @@ const swaggerDocument = {
         },
       },
     },
+    '/health': {
+      get: {
+        tags: ['health'],
+        summary: 'health checker',
+        description: 'Check server healthy.',
+        produces: ['application/json'],
+        security: [
+          {
+            bearerAuth: [],
+          },
+        ],
+        responses: {
+          '200': {
+            description: 'Server is up',
+            schema: {
+              $ref: '#/components/schemas/HealthChecker',
+            },
+          },
+          '503': {
+            description: 'Server is down',
+            schema: {
+              $ref: '#/components/schemas/HealthChecker',
+            },
+          },
+        },
+      },
+    },
   },
   components: {
     securitySchemes: {
@@ -119,6 +146,27 @@ const swaggerDocument = {
             type: 'string',
             example:
               'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2MDA1NDg5NzUsImV4cCI6MTYwMDYzNTM3NSwic3ViIjoiNDA3ZTM5N2MtODM5Ni00OWQyLWI0MDktM2VkYzY1ZGUzZTc2In0.cbR12xxrkRiIUX9lfoZSlR2zPm_kiZpRTqnDcUHEQI8',
+          },
+        },
+      },
+      HealthCheck: {
+        type: 'object',
+        properties: {
+          uptime: {
+            type: 'number',
+            example: '18.226527',
+          },
+          status: {
+            type: 'string',
+            example: 'UP',
+          },
+          message: {
+            type: 'string',
+            example: 'Server is health',
+          },
+          timestamp: {
+            type: 'string',
+            example: '1600814478731',
           },
         },
       },

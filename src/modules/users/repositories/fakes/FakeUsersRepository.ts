@@ -8,6 +8,7 @@ class FakrUsersRepository implements IUsersRepository {
       id: '407e397c-8396-49d2-b409-3edc65de3e76',
       email: 'test@test.com',
       password: '123456',
+      role: 1,
     },
   ];
 

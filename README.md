@@ -54,7 +54,7 @@ NodeJS was chosen for this project because it is light, fast and powerful. As I 
   * [Jest](https://jestjs.io/)
   * [supertest](https://github.com/visionmedia/supertest)
   * [ts-jest](https://github.com/kulshekhar/ts-jest)
-* [Swagger Documentation](https://github.com/scottie1984/swagger-ui-express)
+* [Swagger UI Express](https://github.com/scottie1984/swagger-ui-express)
 
 ## Code Patterns
 In this project, are used some patterns to mantain code organization:

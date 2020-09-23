@@ -11,11 +11,11 @@ interface TokenPayload {
   role: string;
 }
 
-const ensureAuthenticated = (
+export default function ensureAuthenticated(
   request: Request,
   response: Response,
   next: NextFunction,
-): void => {
+): void {
   const authHeader = request.headers.authorization;
 
   if (!authHeader) {
@@ -38,6 +38,4 @@ const ensureAuthenticated = (
   } catch {
     throw new AppError('Token inválido.', 401);
   }
-};
-
-export default ensureAuthenticated;
+}

@@ -10,8 +10,7 @@ const adressesController = new AdressesController();
 
 adressesRouter.get(
   '/:cep',
-  ensureAuthenticated,
-  ensureAuthorized,
+  [ensureAuthenticated, ensureAuthorized],
   adressesController.show,
 );
 

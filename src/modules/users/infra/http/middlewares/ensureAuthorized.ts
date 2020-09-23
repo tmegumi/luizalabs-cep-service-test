@@ -3,11 +3,11 @@ import { Request, Response, NextFunction } from 'express';
 import userRoles from '@modules/users/constants/roles';
 import AppError from '@shared/errors/AppError';
 
-const ensureAuthorized = (
+export default function ensureAuthorized(
   request: Request,
   resposne: Response,
   next: NextFunction,
-): void => {
+): void {
   const { role } = request.user;
 
   if (role !== Number(userRoles.Admin)) {
@@ -15,6 +15,4 @@ const ensureAuthorized = (
   }
 
   return next();
-};
-
-export default ensureAuthorized;
+}
